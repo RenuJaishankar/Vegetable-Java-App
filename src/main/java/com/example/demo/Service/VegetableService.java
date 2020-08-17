@@ -27,11 +27,15 @@ public class VegetableService {
 
     public Optional<Vegetable> updateVegetable(Vegetable newVegetable,Long id){
             vegetableRepository.findById(id).map(vegetable->    {vegetable.setName(newVegetable.getName();
-                                       vegetable.setEmoji(newVegetable.getEmoji());
-                                    vegetable.setColor(newVegetable.getColor());
-               return vegetableRepository.save(vegetable);
+                                                                vegetable.setEmoji(newVegetable.getEmoji());
+                                                                vegetable.setColor(newVegetable.getColor());
+                           return vegetableRepository.save(vegetable);
                     });
-               return vegetableRepository.findById(id);
+                           return vegetableRepository.findById(id);
     }
 
+    public void deleteVegetable(Long id){
+           vegetableRepository.deleteById(id);
+
+     }
 }
