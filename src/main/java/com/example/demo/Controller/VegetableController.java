@@ -12,7 +12,11 @@ import java.util.Optional;
 public class VegetableController {
   @Autowired
   VegetableService vegetableService;
+    @PostMapping("/")
+     public void postVegetable(@RequestBody Vegetable vegetable){
+        vegetableService.createVegetable(vegetable);
 
+    }
     @GetMapping("/{id}")
       public Optional<Vegetable> getVegetable(@PathVariable Long id){
           return vegetableService.getVegetable(id);
@@ -24,6 +28,10 @@ public class VegetableController {
      @PutMapping("/{id}")
         public Optional<Vegetable> updateVegetable(@RequestBody Vegetable newVegetable,Long id){
         return vegetableService.updateVegetable(newVegetable,id);
+     }
+     @DeleteMapping("/{id}")
+    public void deleteVegetable(@PathVariable Long id){
+        vegetableService.deleteVegetable(id);
      }
 
 
