@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>VEGETABLE TABLE</h1>
+
+<form action="/api/" method="post">
+    <label>
+        Vegetable Name:
+        <input name="Vegetable name" autocomplete="name">
+    </label>
+    <label>
+        Emoji:
+        <input name="emoji" autocomplete="emoji">
+    </label>
+    <label>
+        Vegetable Color:
+        <input name="vegetable color" autocomplete="vegetable color">
+    </label>
+    <button>Save</button>
+</form>
+<br>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>
+            Vegetable Id
+        </th>
+        <th>
+            Vegetable Name
+        </th>
+        <th>
+            Emoji
+        </th>
+        <th>
+            Vegetable Color
+        </th>
+    </tr>
+
+
+    </thead>
+    <tbody id="vegetables">
+
+    </tbody>
+<script>
+    let tbody= document.getElementById("vegetables")
+</script>
+
+</body>
+</html>
