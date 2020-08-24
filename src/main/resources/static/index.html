@@ -49,6 +49,49 @@
     </tbody>
 <script>
     let tbody= document.getElementById("vegetables")
+
+    let vegetableUpdater = (id) => {
+
+    let nameInput = document.getElementById(`vegetable-name-${id}')
+    let emojiInput= document.getElementById(`vegetable-emoji-${id}`)
+    let colorInput = document.getElementById('vegetable-color-${id}`)
+
+    let updatedVegetable = {
+       name=nameInput.innerText
+       emoji=emojiInput.innerText
+       color=colorInput.innerText
+     }
+
+
+
+    }
+
+    let vegetableBuilder = (data) => {
+     data.forEach(vegetable => {
+       let rowItem = document.createElement('tr')
+
+         rowItem.id= `row-${vegetable.id}` //row-1.row-2
+          tbody.appendChild(rowitem)
+          rowitem.innerHTML=
+
+               `
+            <td id="vegetable-id-${vegetable.vegetableId}">{vegetable.id}</td>
+            <td contenteditable="true" id="vegetable-name-${vegetable.name}>{vegetable.name}</td>
+            <td contenteditable="true" id="vegetable-emoji-${vegetable.emoji}>{vegetable.emoji}</td>
+            <td contenteditable="true" id="vegetable-color-{vegetable.color>{vegetable.color</td>
+            //id's are given like vegetable-id-1 ,vegetable-name-1,vegetable-emoji-1,vegetable-color-1
+            <td class="hover"><a onClick="vegetableUpdater">Update </a>  </td>
+            <td class="hover"><a onClick="vegetableDeleter">Delete </a> </td>    `
+
+
+           })
+     }
+let fetchVegetables = () => {
+   fetch('/api/')
+    .then(response=>response.json())
+    .then(data=>vegetableBuilder(data))
+ }
+fetchVegetables()
 </script>
 
 </body>
