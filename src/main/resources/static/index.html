@@ -47,8 +47,19 @@
     <tbody id="vegetables">
 
     </tbody>
-<script>
-    let tbody= document.getElementById("vegetables")
+</table>
+    <script>
+    let tbody = document.getElementById("vegetables")
+
+    let vegetableDeleter = (id) => {
+      fetch(`\api\${id}`,{
+      method:'DELETE'
+      })
+      .then(console.log("it works"))
+      .then(document.getElementById(`row-${id}`).remove())
+       .then(console.log("deleted an animal"))
+
+    }
 
     let vegetableUpdater = (id) => {
 
@@ -57,12 +68,26 @@
     let colorInput = document.getElementById('vegetable-color-${id}`)
 
     let updatedVegetable = {
-       name=nameInput.innerText
-       emoji=emojiInput.innerText
+       name=nameInput.innerText,
+       emoji=emojiInput.innerText,
        color=colorInput.innerText
      }
+     fetch(`/api/${id}`, {
 
-
+  headers: {
+    'Accept':'application/json',
+    'Content-Type': 'application/json',
+  },
+  method: 'PUT'
+  body: JSON.stringify(updatedVegetable),
+})
+.then(response => response.json())
+.then(json => {
+  nameInput.innerText=json.name
+  emojiInput.innerText=json.emoji
+  colorInput.innerText=json.color
+  colorInput.style.backgroundColor=json.color
+})
 
     }
 
@@ -92,7 +117,10 @@ let fetchVegetables = () => {
     .then(data=>vegetableBuilder(data))
  }
 fetchVegetables()
-</script>
+
+
+
+    </script>
 
 </body>
 </html>
